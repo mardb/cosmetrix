@@ -129,7 +129,69 @@ const products = [
   }
 ];
 //------------
+const posts = [
+  {
+    title: "Post One",
+    body: "This is the body for Post One."
+  },
+  {
+    title: "Post Two",
+    body: "This is the body for Post Two."
+  },
+  {
+    title: "Post Three",
+    body: "This is the body for Post Three."
+  },
+  {
+    title: "Post Four",
+    body: "This is the body for Post Four."
+  }
+];
 
+//---------------
+//Delete all Products
+console.log("Deleting all products.. ");
+
+db.Product.deleteMany({}, (err, result) => {
+  if (err) {
+    console.log(err);
+    process.exit();
+  }
+  // console.log(result); //
+  console.log(`Successfully deleted ${result.deletedCount} products.`);
+
+  //create new products
+  console.log('Creating new Products')
+db.Product.create(products, (err, newProducts) =>{
+  if(err){
+    console.log();
+    process.exit();
+
+  }
+  console.log(`Successfully created${newProducts.length} products.`);
+
+
+  //delete all Posts
+  console.log("Deleting all posts");
+  db.Post.deleteMany({}, (err, result) => {
+    if (err) {
+      console.log(err);
+      process.exit();
+    }
+    console.log(`Successfully deleted ${result.deletedCount} posts.`);
+    //create new post
+    console.log("Creating new post...");
+    db.Post.create(posts, (err, newPosts) => {
+      if (err) {
+        console.log(err);
+        process.exit();
+      }
+      console.log(`Successfully created${newPosts.length} posts.`);
+      process.exit();
+    });
+  });
+});
+});
 
 //-------------
 
