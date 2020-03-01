@@ -2,7 +2,7 @@ const db = require('../models');
 
 
 const index = (req, res) => {
-  db.Product.findAll({}, (err, allProduct) => {
+  db.Product.find({}, (err, allProduct) => {
     if(err) return res.status(400).json({status:400, error: 'Something went wrong. Please try again.'});
   
     res.json(allProduct)

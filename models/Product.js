@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+const Post = require('./Post')
 
 const ProductSchema = new mongoose.Schema({
 brand: String, 
@@ -8,17 +10,19 @@ description: String,
 category: String,
 productType: String, 
 rating: Number,
-tag:[String],
+tags:[String],
 productColor: [
   { 
     hexValue: String,
     colorName: String,
   }
 ],
-img: String, 
-post:[post.Schema] 
+image_link: String, 
+product_link: String,
+website_link: String,
+post:[Post.schema] 
 
 }
 )
-
-module.exports= mongoose.model('Product', ProductSchema)
+const Product = mongoose.model('Product', ProductSchema);
+module.exports= Product;

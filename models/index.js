@@ -14,5 +14,5 @@ mongoose
   module.exports ={
   //uncomment when files have been added 
     Post: require('./Post'),
-    // Product: require('./Product'),
+    Product: require('./Product'),
   }
