@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const DB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/cosmetrix";
 
 mongoose
   .connect(DB_URI, {
@@ -13,6 +13,6 @@ mongoose
 
   module.exports ={
   //uncomment when files have been added 
-    // Post: require('./Post');
-    // Product: require('./Product');
+    Post: require('./Post'),
+    Product: require('./Product'),
   }
