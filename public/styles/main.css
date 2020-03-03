@@ -9,3 +9,7 @@ body {
 .my-4 {
   margin-bottom: 1.5rem !important;
 }
+.carouselImg {
+  height: 50vh;
+  width: 100%;
+}
