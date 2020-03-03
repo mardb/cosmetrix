@@ -14,10 +14,10 @@ db.Post.create(req.body,(err, newPost) =>{
   //create a post to associate with Product
   if(err) return res.status(400).json({status: 400, error: 'Something went wrong while attempting to create a post. Please try again.'})
   //user Post ID to find which post to embed to 
-  db.Product.findById(req.params.productId, (err, foundProduct) => {
+  db.Product.findById(req.params.id, (err, foundProduct) => {
     if(err) return res.status(400).json({status: 400, error: 'Something went wrong. Please Try again.'});
     //When we find product we use push() method to push the new Post into the Products Post
-    foundProduct.posts.push(newPost);
+    foundProduct.post.push(newPost);
 
     //save document anytime there any changes!
     foundProduct.save((err, savedProduct) => {
