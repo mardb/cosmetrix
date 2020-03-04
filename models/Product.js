@@ -6,20 +6,21 @@ const ProductSchema = new mongoose.Schema({
 brand: String, 
 name: String, 
 price: Number,
+image_link: String, 
+product_link: String,
+website_link: String,
+
 description: String,
-category: String,
-productType: String, 
 rating: Number,
-tags:[String],
-productColor: [
+category: String,
+product_type: String, 
+tag_list:[String],
+product_colors: [
   { 
     hexValue: String,
     colorName: String,
   }
 ],
-image_link: String, 
-product_link: String,
-website_link: String,
 post:[Post.schema] 
 
 }

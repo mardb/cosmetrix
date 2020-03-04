@@ -23,7 +23,7 @@ function getProductTemplate(product) {
   return `
   <div class="col-lg-4 col-md-6 mb-4">
   <div class="card h-100">
-    <a href="#"><img class="card-img-top" src="https://www.sephora.com/productimages/sku/s2216638-main-zoom.jpg?imwidth=583/700x400" alt=""></a>
+    <a href="#"><img class="card-img-top" src=${product.image_link} alt=""></a>
     <div class="card-body">
       <h4 class="card-title">
         <a href="#">${product.name}</a>
