@@ -10,11 +10,14 @@ const PORT = process.env.PORT || 4000;
 const routes = require('./routes');
 
 //middleware
+app.use(express.static(__dirname + '/public/'));
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //api routes
-// app.use('/', routes.views);
+app.use('/', routes.views);
 app.use('/api/v1', routes.api);
 // app.get('/product/:id/')
 //starts the server 

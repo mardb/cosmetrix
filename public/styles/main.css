@@ -17,3 +17,6 @@ body {
 .card-img-size {
   width: 50%;
 }
+#button {
+  margin-left: 50%;
+}
