@@ -13,3 +13,7 @@ body {
   height: 50vh;
   width: 100%;
 }
+
+.card-img-size {
+  width: 50%;
+}
