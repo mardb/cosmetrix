@@ -9,10 +9,11 @@ router.post('/products', ctrl.products.create);
 router.put('/products/:id', ctrl.products.update);
 router.delete('/products/:id', ctrl.products.destroy);
 
+
 //posts routes
 router.get('/posts', ctrl.posts.index);
 router.get('/posts/:id', ctrl.posts.show);
-router.post('/posts', ctrl.posts.create);
+router.post('/products/:id/posts', ctrl.posts.create);
 router.put('/posts/:id', ctrl.posts.update);
 router.delete('/posts/:id', ctrl.posts.destroy);
 
