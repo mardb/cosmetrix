@@ -4,7 +4,7 @@ const API_BASE = '/api/v1';
 const product = document.querySelector('.singleProduct');
 const productId = window.location.pathname.split('/')[2];
 const postForm  = document.querySelector('.card-body');
-
+$('')
 
 function getProduct() {
   fetch( `${API_BASE}/products/${productId}`)
@@ -30,11 +30,10 @@ function getProductTemplate(product){
             <small class="text-muted">Posted by Anonymous on ${post.createdAt} </small>
             <hr>
             
-            <a type="button" class="btn btn-success" id ="reviewButton" data-target="#leaveReview" data-toggle='modal'>Leave a Review</a>
       </div>
     `;
   }).join("");
-  postForm.insertAdjacentHTML('beforeend', productPosts)
+  postForm.insertAdjacentHTML('afterbegin', productPosts)
 
 
 
