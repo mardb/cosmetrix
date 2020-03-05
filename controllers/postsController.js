@@ -10,10 +10,13 @@ db.Post.find({}, (err, allPosts) => {
 });
 };
 const create = (req, res) => {
+  console.log('creating post');
+  console.log(req.body)
 db.Post.create(req.body,(err, newPost) =>{
   //create a post to associate with Product
   if(err) return res.status(400).json({status: 400, error: 'Something went wrong while attempting to create a post. Please try again.'})
   //user Post ID to find which post to embed to 
+  console.log('post created')
   db.Product.findById(req.params.id, (err, foundProduct) => {
     if(err) return res.status(400).json({status: 400, error: 'Something went wrong. Please Try again.'});
     //When we find product we use push() method to push the new Post into the Products Post
