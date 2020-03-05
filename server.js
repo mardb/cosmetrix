@@ -22,3 +22,5 @@ app.use('/api/v1', routes.api);
 // app.get('/product/:id/')
 //starts the server 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`))
+
+
