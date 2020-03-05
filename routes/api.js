@@ -14,8 +14,10 @@ router.delete('/products/:id', ctrl.products.destroy);
 router.get('/posts', ctrl.posts.index);
 router.get('/posts/:id', ctrl.posts.show);
 router.post('/products/:id/posts', ctrl.posts.create);
+router.put('/products/:id/posts/:id/update', ctrl.posts.update);//updates posts 
 router.put('/posts/:id', ctrl.posts.update);
 router.delete('/posts/:id', ctrl.posts.destroy);
+
 
 //bonus routes if time permits - comment for now
 // router.get('/users', ctrl.users.index);

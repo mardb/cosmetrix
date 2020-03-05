@@ -1,68 +1,134 @@
-console.log('products are showing... ')
+console.log("products are showing... ");
 
-const API_BASE = '/api/v1';
-const product = document.querySelector('.singleProduct');
-const productId = window.location.pathname.split('/')[2];
-const postForm  = document.querySelector('.card-body');
-$('')
+const API_BASE = "/api/v1";
+const product = document.querySelector(".singleProduct");
+const productId = window.location.pathname.split("/")[2];
+const postForm = document.getElementById("newPost");
+const reviewContainer = document.getElementById('reviews') 
 
+reviewContainer.addEventListener('click', (event)=>{
+  if(event.target.classList.contains('updateReview')){
+    console.log('Update Review');
+    console.log(event.target.parentNode.id)
+    //
+  }
+})
 function getProduct() {
-  fetch( `${API_BASE}/products/${productId}`)
-  .then((stream) => stream.json())
-  .then(res => render(res)).catch((err) => console.log(err))
+  fetch(`${API_BASE}/products/${productId}`)
+    .then(stream => stream.json())
+    .then(res => render(res))
+    .catch(err => console.log(err));
 }
 getProduct();
 
-function render(productObj){
-console.log(productObj)
+function render(productObj) {
+  console.log(productObj);
 
-const productTemplate = getProductTemplate(productObj);
-product.innerHTML = '';
-product.insertAdjacentHTML('beforeend', productTemplate);
+  const productTemplate = getProductTemplate(productObj);
+  product.innerHTML = "";
+  product.insertAdjacentHTML("beforeend", productTemplate);
 }
 
-function getProductTemplate(product){
-  //product reviews template 
-  const productPosts = product.post.map((post) =>{
-    return`
+function getProductTemplate(product) {
+  //product reviews template
+  reviewContainer.innerHTML = "";
+
+  const productPosts = product.post
+    .map(post => {
+      return `
       <div id='${post._id}'>
+       <a href='/products/${productId}/posts/${post._id}/update' class='btn btn-primary updateReview'>Update</a> <button class='deleteReview'>Delete</button> 
       <p id='body'>${post.body}</p>
             <small class="text-muted">Posted by Anonymous on ${post.createdAt} </small>
-            <hr>
-            
+            <hr>   
       </div>
     `;
-  }).join("");
-  postForm.insertAdjacentHTML('afterbegin', productPosts)
+    })
+    .join("");
+    reviewContainer.insertAdjacentHTML("afterbegin", productPosts);
 
+  //product template
 
-
-//product template 
-
-return `
-<img class="card-img-top card-img-size" id="${product._id}" src=${product.image_link} alt="">
-<div class="card-body">
-  <h3 class="card-title">${product.name}</h3>
-  <h4>${product.price}</h4>
-  <p class="card-text">${product.description}</p>
-  <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-  ${product.rating}.0 stars
-</div>
-`;
-
+  return `
+    <img class="card-img-top card-img-size" id="${product._id}" src=${product.image_link} alt="">
+    <div class="card-body">
+      <h3 class="card-title">${product.name}</h3>
+      <h4>${product.price}</h4>
+      <p class="card-text">${product.description}</p>
+      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+      ${product.rating}.0 stars
+    </div>
+  `;
 }
 
 //add a new review to product
-postForm.addEventListener('click', (event) =>{
+postForm.addEventListener("submit", event => {
   event.preventDefault();
-  console.log('tests')
-  const body = document.getElementById('body')//body from modal
-  let formIsValid = false;
-//this is where i will be selecting error messages in the future and validation errors
+  const body = document.getElementById("reviewBody"); //body from modal
+  // let formIsValid = false;
 
-})//submit a review button 
+  //select error messages
+  // const bodyFeedback = document.querySelector(".body-feedback");
+  //Reset validation classes and errors
+  // body.classList.remove("is-invalid");
+  // body.Feedback && bodyFeedback.remove();
 
-//delete review post 
+  // if (!body.value) {
+  //   formIsValid = false;
+  //   body.classList.add("is-invalid");
+  //   body.parentNode.insertAdjacentHTML(
+  //     "beforeend",
+  //     '<div class="invalid-feedback body-feedback">Content is required</div>'
+  //   );
+  // } else {
+  //   formIsValid = true;
+  //   body.classList.add("is-valid");
+  // }
+  // if (formIsValid) {
+    console.log("Let's do this!");
+    console.log(body)
+    const newPost = {body: body.value };
+    console.log(newPost);
+
+    //this is where i will be selecting error messages in the future and validation errors
+    // let val = $('textarea').val();
+    // // console.log(event.target.value);
+    // console.log(val);
+    // let data = {body: 1425454};
+    // console.log(data);
+
+    fetch(`/api/v1/products/${productId}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newPost)
+    })
+      .then((stream) => stream.json())
+      .then((res) => {
+        console.log(res);
+        if (res.body) {
+          getProduct();
+          // $('#newPostModal').modal('hide');
+        }
+      })
+      .catch(err => console.log(err));
+  // }
+}); //submit a review button
+
+// fetch(`/api/v1/products/${productId}/posts`,{
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'applications/json',
+//   },
+//   body: JSON.stringify(newPost),
+// }).then((stream) => stream.json())
+// .then((res) => {
+//   console.log(res)
+//   getProduct();
+//   $('#newPostModal').modal('hide');
+// }).catch((err) => console.log(err))
+//delete review post
 // product.addEventListener('click', (event) => {
 //   if(event.target.classList.contains('delete-post')){
 //     deletePost(event)
