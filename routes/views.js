@@ -7,4 +7,10 @@ router.get('/', (req, res) => {
   });
 });
 
+
+router.get('/products/:id', (req, res) => {
+  res.sendFile('views/products/show.html', {
+    root: __dirname + '/../'
+  });
+});
 module.exports = router;

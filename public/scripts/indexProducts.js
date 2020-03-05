@@ -30,6 +30,7 @@ function getProductTemplate(product) {
       </h4>
   <h5>$ ${product.price}</h5>
       <p class="card-text"> ${product.description}</p>
+      <a href="/products/${product._id}" class="btn btn-primary float-right">More...</a>
     </div>
     <div class="card-footer">
       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
