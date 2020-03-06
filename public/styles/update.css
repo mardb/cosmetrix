@@ -2,15 +2,65 @@ textarea {
     height: 300px; 
     width: 600px;
    margin-right: 20%;
-   margin-left: 30%;
+   margin-left: 28%;
+   border-radius: 10px;
+   box-shadow: 0 5px 15px 0 #666;
 }
-.card-title {
-    font-size: 24px;
+.card-header {
     text-align: center;
-}
-body {
-    background-color: blue;
+    font-size: 29px;
+    font-family: sans-serif;
+    font-weight: 400;
 }
 .card {
-    background-color: pink;
+    background-color: white;
 }
+.card-body {
+   
+    height: 500px;
+}
+#submitReview {
+    margin-left: 40%;
+    font-size: 20px;
+    padding: 10px 15px; 
+font-family: sans-serif;
+font-weight: 200;
+  font-size: 21px;
+  cursor: pointer;
+  outline: none;
+  color:black;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px 0;
+}
+#submitReview:hover {background-color: white}
+
+#submitReview:active {
+    background-color: white;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}
+
+#cancelEdit {
+    font-size: 20px;
+    padding: 10px 15px; 
+font-family: sans-serif;
+font-weight: 200;
+  font-size: 21px;
+  cursor: pointer;
+  outline: none;
+  color:black;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px 0;
+}
+#cancelEdit:hover {background-color: white}
+
+#cancelEdit:active {
+    background-color: white;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}
+
