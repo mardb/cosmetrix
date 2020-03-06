@@ -48,7 +48,6 @@ font-weight: 200;
     color: black;
     opacity: 1;
     transition: all 2.5s ease;
-  
 }
 .fly-in-text li:last-child {
     margin-right: 0;
