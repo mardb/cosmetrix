@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  res.sendFile('views/cover.html', {
+    root: __dirname + '/../'
+  });
+
+
+});
+router.get('/products', (req, res) => {
   res.sendFile('views/index.html', {
     root: __dirname + '/../'
   });
