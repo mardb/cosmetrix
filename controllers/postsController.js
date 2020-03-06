@@ -37,15 +37,30 @@ const show = (req, res) => {
 }
 
 const update = (req, res) => {
+  db.Product.findById(req.params.productId,(err, foundProduct) =>{
+    if(err) return res.status(400).json({status: 400, error: "Something went terribly wrong. Please try again"});
+    
+    const foundReview = foundProduct.post.id(req.params.postId);
+    if(!foundReview){
+      return res.status(400).json({status: 400, error: "Review is NOT available at this time."})
+    }
+    foundReview.body = req.body.body;
+    foundProduct.save((err, savedProduct)=> {
+      if(err) return res.status(400).json({status: 400, error: 'Something went wrong, Please try again'});
+      res.json(savedProduct);
 
+    })
+  })
 }
+
+
 const destroy = (req, res) => {
 // find t product the post is embedded in
-db.city.findById(re.params.productId, (err, foundProduct) => {
+db.Product.findById(req.params.productId, (err, foundProduct) => {
   if(err) return res.status(400).json({status: 400, error: "Something went wrong, please try again."});
 
 
-  const postToDelete = foundProduct.posts.id(req.params.postId);
+  const postToDelete = foundProduct.post.id(req.params.reviewId);
 
   
   if(!postToDelete) {
