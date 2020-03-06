@@ -39,7 +39,7 @@ function getProductTemplate(product) {
     .map(post => {
       return `
       <div id='${post._id}'>
-       <a href='/products/${productId}/posts/${post._id}/update' class='btn btn-primary updateReview'>Update</a> <button class='deleteReview'>Delete</button> 
+       <a href='/products/${productId}/posts/${post._id}/update' class='btn btn-primary updateReview'>Update</a> <button class='delete-post'>Delete</button> 
       <p id='body'>${post.body}</p>
             <small class="text-muted">Posted by Anonymous on ${post.createdAt} </small>
             <hr>   
@@ -144,3 +144,24 @@ postForm.addEventListener("submit", event => {
 //     console.log(res)
 //   }).catch((err) => console.log(err));
 // }
+
+
+reviewContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-post')) {
+    deletePost(event);
+    console.log("im working");
+  }
+});
+
+function deletePost(event) {
+  // console.log(event.target.parentNode.id)
+  fetch(`/api/v1/products/${productId}/posts/${event.target.parentNode.id}`, {
+    method: 'DELETE',
+  })
+  .then((stream) => stream.json())
+  .then((res) => {
+    console.log(res);
+    getProduct();
+  })
+  .catch((err) => console.log(err));
+}
