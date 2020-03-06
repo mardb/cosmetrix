@@ -6,6 +6,7 @@ const productId = window.location.pathname.split("/")[2];
 const postForm = document.getElementById("newPost");
 const reviewContainer = document.getElementById('reviews') 
 
+//update button switch to delete 
 reviewContainer.addEventListener('click', (event)=>{
   if(event.target.classList.contains('updateReview')){
     console.log('Update Review');
@@ -13,6 +14,7 @@ reviewContainer.addEventListener('click', (event)=>{
     //
   }
 })
+
 function getProduct() {
   fetch(`${API_BASE}/products/${productId}`)
     .then(stream => stream.json())

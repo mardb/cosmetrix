@@ -13,4 +13,10 @@ router.get('/products/:id', (req, res) => {
     root: __dirname + '/../'
   });
 });
+
+router.get('/products/:id/posts/:id/update', (req, res) =>{
+  res.sendFile('views/posts/update.html', {
+    root: __dirname + '/../'
+  });
+});
 module.exports = router;
