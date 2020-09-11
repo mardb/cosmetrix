@@ -1,0 +1,21 @@
+body {
+    padding-top: 56px;
+  }
+  .mt-4,
+.my-4 {
+  margin-top: 1.5rem !important;
+}
+.mb-4,
+.my-4 {
+  margin-bottom: 1.5rem !important;
+}
+.carouselImg {
+  height: 50vh;
+  width: 100%;
+}
+.card-img-size {
+  width: 50%;
+}
+#button {
+  margin-left: 50%;
+}
